@@ -34,37 +34,33 @@ for Week in monthDays2CalendarList:
 
 
 #dinner dictionary 1=mexican 2=grilled 3=italian 4=slow cooker 5=other
-theDinnerDict={"Chicken Tacos": 1,
-               "Beef Tacos": 1,
-               "Ground Turkey Tacos": 1,
-               "Enchiladas": 1,
-               "Mexican Stuffed Peppers":1,
-               "Salsa Chicken":1,
-               "Chicken Quesadillas":1,
-               "Loaded Nachos":1,
-
-               "Cheeseburgers":2,
-               "Impossible Burgers":2,
-               "Black Bean Burgers":2,
-               "Grilled Chicken Patties":2,
-               "Chicken Wings":2,
-               "Chicken Thighs":2,
-               "Chicken Breasts":2,
-               "Chicken DrumSticks":2,
-               "PorkChops":2,
-               "Steaks":2,
-               "Bratwursts":2,
-               "Chicken Sausages":2,
-
-               "Lazagna":3,
-               "Raviolis and Zoodles":3,
-               "Baked Mastaccoli":3,
-               "Chicken parmesan":3,
-               "Italian Sausage and pasta":3
-
-
-               }
-               
+dinnerDict={0:"mexican", 1:"grill", 2:"baked", 3:"italian"}
+mexicanList=['Chicken Tacos',
+             'Beef Tacos',
+             'Ground Turkey Tacos',
+             'Enchiladas',
+             'Mexican Stuffed Peppers',
+             'Salsa Chicken',
+             'Chicken Quesadillas',
+             'Loaded Nachos']
+grillList=['Cheeseburgers',
+           'Impossible Burgers',
+           'Black Bean Burgers',
+           'Grilled Chicken Patties',
+           'Chicken Wings', 
+           'Chicken Thighs',
+           'Chicken Breasts',
+           'Chicken DrumSticks',
+           'PorkChops',
+           'Steaks',
+           'Bratwursts',
+           'Chicken Sausages']
+bakedList=["fish","chicken"]
+italianList=['Lasagna',
+             'Raviolis and Zoodles',
+             'Baked Mastaccoli',
+             'Chicken parmesan',
+             'Italian Sausage and pasta']
 
 
 
