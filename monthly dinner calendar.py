@@ -68,6 +68,9 @@ def dinnerPicker():
     global italianList
     global breakfastList
     global crockpotList
+    dinnerDictList=[]
+    for k in dinnerDict.keys():
+        dinnerDictList.append(k)
     dinnerTypePicker=random.randint(0,5)
     if dinnerTypePicker == dinnerDict[0]:
         print("we're having mexican")
