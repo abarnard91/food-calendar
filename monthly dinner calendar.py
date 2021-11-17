@@ -33,8 +33,8 @@ for Week in monthDays2CalendarList:
             print(str(days[0])+" its Sunday!")
 
 
-#dinner dictionary 1=mexican 2=grilled 3=italian 4=slow cooker 5=other
-dinnerDict={0:"mexican", 1:"grill", 2:"baked", 3:"italian"}
+#dinner dictionary 0=mexican 1=grilled 2=baked dinners 3=italian 4=breakfast 5=slow cooker
+dinnerDict={0:"mexican", 1:"grill", 2:"baked", 3:"italian", 4:"breakfast",5:"crockpot"}
 mexicanList=['Chicken Tacos',
              'Beef Tacos',
              'Ground Turkey Tacos',
@@ -55,12 +55,27 @@ grillList=['Cheeseburgers',
            'Steaks',
            'Bratwursts',
            'Chicken Sausages']
-bakedList=["fish","chicken"]
+bakedList=["fish",
+           "chicken"]
 italianList=['Lasagna',
              'Raviolis and Zoodles',
              'Baked Mastaccoli',
              'Chicken parmesan',
-             'Italian Sausage and pasta']
+             'Italian Sausage and pasta',
+             'Stuffed shells,
+             'Italian stuffed Peppers"]
+breakfastList=[ "quiche loreine",
+                "breakfast casserole",
+                "french toast",
+                "Eggs and pancakes",
+                "Belgum Waffles"]
+crockpotlist=[  "Crockpot chili",
+                "Ribs",
+                "Chicken Tortilla Soup",
+                "Tortellini soup",
+                "Chicken, Carrots and potatos",
+                "Beef roast",
+                "Pork Roast"]
 
 
 
