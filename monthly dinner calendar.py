@@ -53,7 +53,7 @@ breakfastList=[ "quiche loreine",
                 "french toast",
                 "Eggs and pancakes",
                 "Belgum Waffles"]
-crockpotlist=[  "Crockpot chili",
+crockpotList=[  "Crockpot chili",
                 "Ribs",
                 "Chicken Tortilla Soup",
                 "Tortellini soup",
@@ -61,6 +61,13 @@ crockpotlist=[  "Crockpot chili",
                 "Beef roast",
                 "Pork Roast"]
 def dinnerPicker():
+    global dinnerDict
+    global mexicanList
+    global grillList
+    global bakedList
+    global italianList
+    global breakfastList
+    global crockpotList
     dinnerTypePicker=random.randint(0,5)
     if dinnerTypePicker == dinnerDict[0]:
         print("we're having mexican")
