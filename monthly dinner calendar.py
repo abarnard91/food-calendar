@@ -2,7 +2,8 @@ import random
 import datetime
 import calendar
 #keyboard
-
+loop=False
+innerLoop=False
 ## Setting up date and time to the present
 thePresent= datetime.datetime.now()
 
@@ -72,55 +73,82 @@ def dinnerPicker():
     for k in dinnerDict.keys():
         dinnerDictList.append(k)
     dinnerTypePicker=random.randint(0,5)
-    if dinnerTypePicker == dinnerDict[0]:
+    if dinnerTypePicker == dinnerDictList[0]:
         print("we're having mexican")
         dinner=random.choice(mexicanList)
         print(dinner)
-    if dinnerTypePicker == dinnerDict[1]:
+    if dinnerTypePicker == dinnerDictList[1]:
         print("we're having grilled food")
         dinner=random.choice(grillList)
         print(dinner)
-    if dinnerTypePicker == dinnerDict[2]:
+    if dinnerTypePicker == dinnerDictList[2]:
         print("we're having baked food")
         dinner=random.choice(bakedList)
         print(dinner)
-    if dinnerTypePicker == dinnerDict[3]:
+    if dinnerTypePicker == dinnerDictList[3]:
         print("we're having italian food")
         dinner=random.choice(italianList)
         print(dinner)
-    if dinnerTypePicker == dinnerDict[4]:
+    if dinnerTypePicker == dinnerDictList[4]:
         print("we're having Breakfast food")
         dinner=random.choice(breakfastList)
         print(dinner)
-    if dinnerTypePicker == dinnerDict[5]:
+    if dinnerTypePicker == dinnerDictList[5]:
         print("we're having slow cooker food")
         dinner=random.choice(crockpotList)
         print(dinner)
 
-#iterates the list of weeks in the month
-for Week in monthDays2CalendarList:
-    #iterates list of tuples of (date of month, day of the week)
-    for days in Week:
-        #if day of the week divided by 7 has a remainder of 0 == Monday and so on)
-        #days[0]= day of the month (1-31)
-        if days[1]%7==0:
-            print(str(days[0])+" its Monday!")
-            dinnerPicker()
-        if days[1]%7==1:
-            print(str(days[0])+" its Tuesday!")
-            dinnerPicker()
-        if days[1]%7==2:
-            print(str(days[0])+" its Wednesday!")
-            dinnerPicker()
-        if days[1]%7==3:
-            print(str(days[0])+" its Thursday!")
-            dinnerPicker()
-        if days[1]%7==4:
-            print(str(days[0])+" its Friday!")
-            dinnerPicker()
-        if days[1]%7==5:
-            print(str(days[0])+" its Saturday!")
-            dinnerPicker()
-        if days[1]%7==6:
-            print(str(days[0])+" its Sunday!")
-            dinnerPicker()
+while loop==False:
+    ##iterates the list of weeks in the month
+    for Week in monthDays2CalendarList:
+        ##iterates list of tuples of (date of month, day of the week)
+        #print(Week)
+        #print(Week[6][1])
+
+        if innerLoop==False:
+            ##inner loop to allow week to be redone if you don't like dinner choices
+            for days in Week:
+                ##if day of the week divided by 7 has a remainder of 0 == Monday and so on)
+                ##days[0]= day of the month (1-31)
+        
+                if days[1]%7==0:
+                    print(str(days[0])+" its Monday!")
+                    dinnerPicker()
+                if days[1]%7==1:
+                    print(str(days[0])+" its Tuesday!")
+                    dinnerPicker()
+                if days[1]%7==2:
+                    print(str(days[0])+" its Wednesday!")
+                    dinnerPicker()
+                if days[1]%7==3:
+                    print(str(days[0])+" its Thursday!")
+                    dinnerPicker()
+                if days[1]%7==4:
+                    print(str(days[0])+" its Friday!")
+                    dinnerPicker()
+                if days[1]%7==5:
+                    print(str(days[0])+" its Saturday!")
+                    dinnerPicker()
+                if days[1]%7==6:
+                    print(str(days[0])+" its Sunday!")
+                    dinnerPicker()
+                
+        ## This pauses the for loop at the week level to check if you like the dinner choices    
+    
+            if Week[6][1]==6:
+                userChoice=str(input("do you want to continue?"))
+                if userChoice=="yes":
+                    print("Okie Dokie")
+                    continue
+                    innerLoop==True
+                else:
+                    retry=str(input("do you want to retry?"))
+                    if retry=="yes":
+                        print("Back to the top")
+                        break
+                    else:
+                        print("bye")
+                        loop=True
+                        innerLoop=True
+                        break
+                    
