@@ -1,5 +1,5 @@
 import tkinter
-window=tkinter.tkinter()
+window=tkinter.Tk()
 window.title("hello world")
 window.geometry("600x400")
 window.mainloop()
