@@ -19,7 +19,7 @@ monthDays2CalendarList=theCalendar.monthdays2calendar(presentYear, presentMonth)
 
 
 #dinner dictionary 0=mexican 1=grilled 2=baked dinners 3=italian 4=breakfast 5=slow cooker
-dinnerDict={0:"mexican", 1:"grill", 2:"baked", 3:"italian", 4:"breakfast",5:"crockpot"}
+dinnerDict={0:"mexican", 1:"grill", 2:"baked", 3:"italian", 4:"breakfast",5:"crockpot", 6:"pizza"}
 mexicanList=['Chicken Tacos',
              'Beef Tacos',
              'Ground Turkey Tacos',
@@ -61,6 +61,10 @@ crockpotList=[  "Crockpot chili",
                 "Chicken, Carrots and potatos",
                 "Beef roast",
                 "Pork Roast"]
+pizzaList= ["thin crust", 
+            "Giordanos deep dish", 
+            "Lou malnatis deep dish", 
+            "cauliflower crust pizza"] 
 def dinnerPicker():
     global dinnerDict
     global mexicanList
@@ -69,10 +73,11 @@ def dinnerPicker():
     global italianList
     global breakfastList
     global crockpotList
+    global pizzaList
     dinnerDictList=[]
     for k in dinnerDict.keys():
         dinnerDictList.append(k)
-    dinnerTypePicker=random.randint(0,5)
+    dinnerTypePicker=random.randint(0,6)
     if dinnerTypePicker == dinnerDictList[0]:
         print("we're having mexican")
         dinner=random.choice(mexicanList)
@@ -97,6 +102,10 @@ def dinnerPicker():
         print("we're having slow cooker food")
         dinner=random.choice(crockpotList)
         print(dinner)
+    if dinnerTypePicker == dinnerDictList[6]:
+        print("we're having pizza!!!")
+        dinner=random.choice(pizzaList)
+        print(dinner) 
 
 while loop==False:
     ##iterates the list of weeks in the month
