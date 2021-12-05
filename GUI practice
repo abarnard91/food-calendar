@@ -23,10 +23,10 @@ newImage=ImageTk.PhotoImage(resizedImage)
 
 canvas.create_image(10,10, anchor=NW, image=newImage)
 
-monthImage=Label(window, text="December", width=64, height=4, anchor=CENTER, background="grey")
+monthImage=Label(window, text="December", font=("Arial", 40), anchor=CENTER, background="white")
 #monthImage.size("458x70")
 monthImage.pack()
-
+#creates the "label" monthImage on top of the canvas (the calendar jpeg)
 canvas.create_window(512,93, window=monthImage)
 
 
