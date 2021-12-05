@@ -29,6 +29,9 @@ monthImage.pack()
 #creates the "label" monthImage on top of the canvas (the calendar jpeg)
 canvas.create_window(512,93, window=monthImage)
 
+numberOne=Label(window, text="1", font=("Arial",14), anchor=CENTER, background="white")
+numberOne.pack()
+canvas.create_window(170,166, window=numberOne)
 
 
 ###Add image as a PNG w/o using PIL and ImageTK
