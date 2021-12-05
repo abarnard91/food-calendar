@@ -1,5 +1,40 @@
-import tkinter
-window=tkinter.Tk()
+from tkinter import *
+from PIL import ImageTk, Image
+window=Tk()
 window.title("hello world")
-window.geometry("600x400")
+#Size of the full window
+window.geometry("1200x800")
+window.configure(background="grey")
+
+##Resize a JPEG image
+
+canvas=Canvas(window, width=1000, height= 800)
+canvas.pack()
+
+##Image file
+path= "blank calendar.jpg"
+#open image file as variable img
+img=(Image.open(path))
+
+#actual resizing 
+resizedImage= img.resize((1000,800), Image.ANTIALIAS)
+newImage=ImageTk.PhotoImage(resizedImage)
+
+
+canvas.create_image(10,10, anchor=NW, image=newImage)
+
+monthImage=Label(window, text="December", width=64, height=4, anchor=CENTER, background="grey")
+#monthImage.size("458x70")
+monthImage.pack()
+
+canvas.create_window(512,93, window=monthImage)
+
+
+
+###Add image as a PNG w/o using PIL and ImageTK
+##img =PhotoImage(file="blank calendar.png")
+##
+##Label(window, image=img, anchor=CENTER).pack()
+##
+
 window.mainloop()
