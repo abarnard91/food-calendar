@@ -28,6 +28,9 @@ mexicanList=['Chicken Tacos',
              'Salsa Chicken',
              'Chicken Quesadillas',
              'Loaded Nachos']
+
+backUpMexicanList=[]
+
 grillList=['Cheeseburgers',
            'Impossible Burgers',
            'Black Bean Burgers',
@@ -40,8 +43,16 @@ grillList=['Cheeseburgers',
            'Steaks',
            'Bratwursts',
            'Chicken Sausages']
+
+backUpGrillList=[]
+
 bakedList=["fish",
-           "chicken"]
+           "chicken",
+           "shepherds pie",
+           "casserole"]
+           
+backUpBakedList=[]
+
 italianList=['Lasagna',
              'Raviolis and Zoodles',
              'Baked Mastaccoli',
@@ -49,11 +60,17 @@ italianList=['Lasagna',
              'Italian Sausage and pasta',
              'Stuffed shells',
              'Italian stuffed Peppers']
+             
+backUpItalianList=[]
+             
 breakfastList=[ "quiche loreine",
                 "breakfast casserole",
                 "french toast",
                 "Eggs and pancakes",
                 "Belgum Waffles"]
+                
+backUpBreakfastList=[]
+                
 crockpotList=[  "Crockpot chili",
                 "Ribs",
                 "Chicken Tortilla Soup",
@@ -61,51 +78,74 @@ crockpotList=[  "Crockpot chili",
                 "Chicken, Carrots and potatos",
                 "Beef roast",
                 "Pork Roast"]
+                
+backUpCrockpotList=[]
+                
 pizzaList= ["thin crust", 
             "Giordanos deep dish", 
             "Lou malnatis deep dish", 
-            "cauliflower crust pizza"] 
+            "cauliflower crust pizza",
+            "BBQ chicken Pizza"] 
+            
+backUpPizzaList=[]
+
+def randomDinner(meal,backup):
+        if len(meal) !=0:
+            dinner=random.choice(meal)
+            meal.remove(dinner)
+            backup.append(dinner)
+            print(dinner)
+        else:
+            print("list reboot")
+            meal=backup
+            dinner=random.choice(meal)
+            meal.remove(dinner)
+            backup.append(dinner)
+            print(dinner)
+    
+            
 def dinnerPicker():
-    global dinnerDict
-    global mexicanList
-    global grillList
-    global bakedList
-    global italianList
-    global breakfastList
-    global crockpotList
-    global pizzaList
+    global dinnerDict, mexicanList, grillList, bakedList, italianList, breakfastList, crockpotList, pizzaList
+    #global mexicanList
+    #global grillList
+    #global bakedList
+    #global italianList
+    #global breakfastList
+    #global crockpotList
+    #global pizzaList
+    global backUpMexicanList
     dinnerDictList=[]
     for k in dinnerDict.keys():
         dinnerDictList.append(k)
     dinnerTypePicker=random.randint(0,6)
+    #dinnerTypePicker=0
     if dinnerTypePicker == dinnerDictList[0]:
         print("we're having mexican")
-        dinner=random.choice(mexicanList)
-        print(dinner)
+        randomDinner(mexicanList,backUpMexicanList)
+    
     if dinnerTypePicker == dinnerDictList[1]:
         print("we're having grilled food")
-        dinner=random.choice(grillList)
-        print(dinner)
+        randomDinner(grillList,backUpGrillList)
+        
     if dinnerTypePicker == dinnerDictList[2]:
         print("we're having baked food")
-        dinner=random.choice(bakedList)
-        print(dinner)
+        randomDinner(bakedList,backUpBakedList)
+        
     if dinnerTypePicker == dinnerDictList[3]:
         print("we're having italian food")
-        dinner=random.choice(italianList)
-        print(dinner)
+        randomDinner(italianList,backUpItalianList)
+        
     if dinnerTypePicker == dinnerDictList[4]:
         print("we're having Breakfast food")
-        dinner=random.choice(breakfastList)
-        print(dinner)
+        randomDinner(breakfastList,backUpBreakfastList)
+
     if dinnerTypePicker == dinnerDictList[5]:
         print("we're having slow cooker food")
-        dinner=random.choice(crockpotList)
-        print(dinner)
+        randomDinner(crockpotList,backUpCrockpotList)
+        
     if dinnerTypePicker == dinnerDictList[6]:
         print("we're having pizza!!!")
-        dinner=random.choice(pizzaList)
-        print(dinner) 
+        randomDinner(pizzaList,backUpPizzaList)
 
 while loop==False:
     ##iterates the list of weeks in the month
