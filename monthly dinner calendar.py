@@ -1,6 +1,7 @@
 import random
 import datetime
 import calendar
+
 #keyboard
 loop=False
 innerLoop=False
@@ -89,31 +90,42 @@ pizzaList= ["thin crust",
             
 backUpPizzaList=[]
 
+#empty list that has random dinners from randomDinner function appended to it to store
+#the randomized dinners as an individual variable as the dinner variable is recycled each iteration
+#for some reason this needs to be declared as a global variable outside the function to work, but counter needs to be declared global inside the function
+global randomDinnersList
+randomDinnersList=[]
+#simple counter that increases by 1 every iteration of the for loop (coinsides with the date of the month)
+counter=0
 def randomDinner(meal,backup):
-        if len(meal) !=0:
-            dinner=random.choice(meal)
-            meal.remove(dinner)
-            backup.append(dinner)
-            print(dinner)
-        else:
-            print("list reboot")
-            meal=backup
-            dinner=random.choice(meal)
-            meal.remove(dinner)
-            backup.append(dinner)
-            print(dinner)
-    
+    global counter
+    if len(meal) !=0:
+        dinner=random.choice(meal)
+        meal.remove(dinner)
+        backup.append(dinner)
+        randomDinnersList.append(dinner)
+        print(dinner) 
+        print(randomDinnersList[counter])
+        #print(randomDinnersList)
+        return randomDinnersList
+        counter+=1
+        
+    else:
+        print("list reboot")
+        meal=backup
+        dinner=random.choice(meal)
+        meal.remove(dinner)
+        backup.append(dinner)
+        randomDinnersList.append(dinner)
+        print(dinner)
+        print (randomDinnersList[counter])
+        #print(randomDinnersList)
+        return randomDinnersList
+        counter+=1
+            
             
 def dinnerPicker():
-    global dinnerDict, mexicanList, grillList, bakedList, italianList, breakfastList, crockpotList, pizzaList
-    #global mexicanList
-    #global grillList
-    #global bakedList
-    #global italianList
-    #global breakfastList
-    #global crockpotList
-    #global pizzaList
-    global backUpMexicanList
+
     dinnerDictList=[]
     for k in dinnerDict.keys():
         dinnerDictList.append(k)
@@ -148,11 +160,14 @@ def dinnerPicker():
         randomDinner(pizzaList,backUpPizzaList)
 
 while loop==False:
+    
     ##iterates the list of weeks in the month
     for Week in monthDays2CalendarList:
         ##iterates list of tuples of (date of month, day of the week)
         #print(Week)
         #print(Week[6][1])
+        
+        
 
         if innerLoop==False:
             ##inner loop to allow week to be redone if you don't like dinner choices
@@ -163,9 +178,11 @@ while loop==False:
                 if days[1]%7==0:
                     print(str(days[0])+" its Monday!")
                     dinnerPicker()
+                    
                 if days[1]%7==1:
                     print(str(days[0])+" its Tuesday!")
                     dinnerPicker()
+                    
                 if days[1]%7==2:
                     print(str(days[0])+" its Wednesday!")
                     dinnerPicker()
@@ -181,7 +198,7 @@ while loop==False:
                 if days[1]%7==6:
                     print(str(days[0])+" its Sunday!")
                     dinnerPicker()
-                
+
         ## This pauses the for loop at the week level to check if you like the dinner choices    
     
             if Week[6][1]==6:
