@@ -19,8 +19,8 @@ monthDays2CalendarList=theCalendar.monthdays2calendar(presentYear, presentMonth)
 
 
 
-#dinner dictionary 0=mexican 1=grilled 2=baked dinners 3=italian 4=breakfast 5=slow cooker
-dinnerDict={0:"mexican", 1:"grill", 2:"baked", 3:"italian", 4:"breakfast",5:"crockpot", 6:"pizza"}
+#dinner dictionary 0=mexican 1=grilled 2=baked dinners 3=italian 4=breakfast 5=slow cooker 6= pizza 7= asian
+dinnerDict={0:"mexican", 1:"grill", 2:"baked", 3:"italian", 4:"breakfast",5:"crockpot", 6:"pizza", 7:"asian"}
 mexicanList=['Chicken Tacos',
              'Beef Tacos',
              'Ground Turkey Tacos',
@@ -90,37 +90,50 @@ pizzaList= ["thin crust",
             
 backUpPizzaList=[]
 
+
+asianList=["orange chicken and cauliflower fried rice",
+           "Chicken stirfry",
+           "Dumplings and fried rice",
+           "potstickers and japanese fried rice"]
+
+backUpAsianList=[]
+
+           
+
 #empty list that has random dinners from randomDinner function appended to it to store
 #the randomized dinners as an individual variable as the dinner variable is recycled each iteration
 #for some reason this needs to be declared as a global variable outside the function to work, but counter needs to be declared global inside the function
-global randomDinnersList
+#global randomDinnersList
 randomDinnersList=[]
 #simple counter that increases by 1 every iteration of the for loop (coinsides with the date of the month)
 counter=0
 def randomDinner(meal,backup):
     global counter
+    #global mexicanList, grillList, bakedList, italianList, breakfastList, crockpotList, pizzaList, asianList
+    #global backUpMexicanList, backUpGrillList, backUpBakedList, backUpItalianList, backUpBreakfastList, backUpCrockpotList, backUpPizzaList, backUpAsianList
+    
     if len(meal) !=0:
         dinner=random.choice(meal)
         meal.remove(dinner)
         backup.append(dinner)
         randomDinnersList.append(dinner)
-        print(dinner) 
-        print(randomDinnersList[counter])
+        print(dinner)
+        #print(randomDinnersList[counter])
         #print(randomDinnersList)
-        return randomDinnersList
+        #return randomDinnersList
         counter+=1
         
     else:
         print("list reboot")
-        meal=backup
+        meal.extend(backup)
+        backup.clear()
         dinner=random.choice(meal)
         meal.remove(dinner)
         backup.append(dinner)
         randomDinnersList.append(dinner)
         print(dinner)
-        print (randomDinnersList[counter])
+        #print (randomDinnersList[counter])
         #print(randomDinnersList)
-        return randomDinnersList
         counter+=1
             
             
@@ -129,8 +142,8 @@ def dinnerPicker():
     dinnerDictList=[]
     for k in dinnerDict.keys():
         dinnerDictList.append(k)
-    dinnerTypePicker=random.randint(0,6)
-    #dinnerTypePicker=0
+    dinnerTypePicker=random.randint(0,7)
+    #dinnerTypePicker=7
     if dinnerTypePicker == dinnerDictList[0]:
         print("we're having mexican")
         randomDinner(mexicanList,backUpMexicanList)
@@ -158,6 +171,10 @@ def dinnerPicker():
     if dinnerTypePicker == dinnerDictList[6]:
         print("we're having pizza!!!")
         randomDinner(pizzaList,backUpPizzaList)
+
+    if dinnerTypePicker == dinnerDictList[7]:
+        print("We're having asian!")
+        randomDinner(asianList, backUpAsianList)
 
 while loop==False:
     
