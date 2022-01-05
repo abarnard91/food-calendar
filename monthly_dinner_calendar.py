@@ -1,6 +1,9 @@
 import random
 import datetime
 import calendar
+from tkinter import *
+from PIL import ImageTk, Image
+#from GUI_practice import *
 
 #keyboard
 loop=False
@@ -11,10 +14,89 @@ thePresent= datetime.datetime.now()
 presentYear= thePresent.year
 
 presentMonth= thePresent.month
+#presentMonth=7
 
 theCalendar = calendar.Calendar()
 
 monthDays2CalendarList=theCalendar.monthdays2calendar(presentYear, presentMonth)
+
+
+if presentMonth==1:
+    presentMonth="January"
+if presentMonth==2:
+    presentMonth="February"
+if presentMonth==3:
+    presentMonth="March"
+if presentMonth==4:
+    presentMonth="April"
+if presentMonth==5:
+    presentMonth="May"
+if presentMonth==6:
+    presentMonth="June"
+if presentMonth==7:
+    presentMonth="July"
+if presentMonth==8:
+    presentMonth="August"
+if presentMonth==9:
+    presentMonth="September"
+if presentMonth==10:
+    presentMonth="October"
+if presentMonth==11:
+    presentMonth="November"
+if presentMonth==12:
+    presentMonth="December"
+
+
+
+
+window=Tk()
+window.title("hello world")
+#Size of the full window
+window.geometry("1200x800")
+window.configure(background="grey")
+
+##Resize a JPEG image
+
+canvas=Canvas(window, width=1000, height= 800)
+canvas.pack()
+
+##Image file
+path= "blank calendar.jpg"
+#open image file as variable img
+img=(Image.open(path))
+
+#actual resizing 
+resizedImage= img.resize((1000,800), Image.ANTIALIAS)
+newImage=ImageTk.PhotoImage(resizedImage)
+
+
+canvas.create_image(10,10, anchor=NW, image=newImage)
+
+monthImage=Label(window, text=((presentMonth +" "+ str(presentYear))), font=("Arial", 40), anchor=CENTER, background="white")
+
+monthImage.pack()
+
+canvas.create_window(512,93, window=monthImage)
+
+
+
+x=170
+y=166
+calendarCounter=0
+
+
+
+def calendarDateNumber(date, x, y):
+     
+    date=Label(window, text=(str(date)), font=("Arial",14), anchor=CENTER, background="white")
+    date.pack()
+    canvas.create_window(x, y, window=date)
+
+
+
+
+
+
 
 
 
@@ -177,16 +259,27 @@ def dinnerPicker():
         randomDinner(asianList, backUpAsianList)
 
 while loop==False:
-    
+
+
+    #monthImage=Label(window, text=((presentMonth +" "+ str(presentYear))), font=("Arial", 40), anchor=CENTER, background="white")
     ##iterates the list of weeks in the month
     for Week in monthDays2CalendarList:
         ##iterates list of tuples of (date of month, day of the week)
         #print(Week)
-        #print(Week[6][1])
+##        print(Week[6][1])
+##        calendarDateNumber(Week[6][1],x,y)
+##        x+=130
+##        calendarCounter+=1
+##        if counter>6:
+##            y+=121
+##            x=170
+##            calendarCounter=0
+##            calendarCounter+=1
+##        
         
         
-
         if innerLoop==False:
+            
             ##inner loop to allow week to be redone if you don't like dinner choices
             for days in Week:
                 ##if day of the week divided by 7 has a remainder of 0 == Monday and so on)
@@ -194,27 +287,107 @@ while loop==False:
         
                 if days[1]%7==0:
                     print(str(days[0])+" its Monday!")
+                    x=300
+                    
+                    calendarDateNumber(days[0],x,y)
+                    
+                    calendarCounter+=1
+                    if calendarCounter>7:
+                        y+=121
+                        #x=170
+                        calendarCounter=0
+                        calendarCounter+=1
                     dinnerPicker()
                     
                 if days[1]%7==1:
                     print(str(days[0])+" its Tuesday!")
+                    x=430
+                    calendarDateNumber(days[0],x,y)
+                    
+                    calendarCounter+=1
+                    if calendarCounter>7:
+                        y+=121
+                        #x=170
+                        calendarCounter=0
+                        calendarCounter+=1
                     dinnerPicker()
                     
                 if days[1]%7==2:
                     print(str(days[0])+" its Wednesday!")
+                    x=560
+                    calendarDateNumber(days[0],x,y)
+                    
+                    calendarCounter+=1
+                    if calendarCounter>7:
+                        y+=121
+                       # x=170
+                        calendarCounter=0
+                        calendarCounter+=1
                     dinnerPicker()
+                    
                 if days[1]%7==3:
                     print(str(days[0])+" its Thursday!")
+                    x=690
+                    
+                    calendarDateNumber(days[0],x,y)
+                    
+                    calendarCounter+=1
+                    if calendarCounter>7:
+                        y+=121
+                       # x=170
+                        calendarCounter=0
+                        calendarCounter+=1
                     dinnerPicker()
+                    
                 if days[1]%7==4:
                     print(str(days[0])+" its Friday!")
+                    x=820
+                    
+                    calendarDateNumber(days[0],x,y)
+                    
+                    calendarCounter+=1
+                    if calendarCounter>7:
+                        y+=121
+                       # x=170
+                        calendarCounter=0
+                        calendarCounter+=1
                     dinnerPicker()
+                    
                 if days[1]%7==5:
                     print(str(days[0])+" its Saturday!")
+                    x=950
+                    
+                    calendarDateNumber(days[0],x,y)
+                    
+                    calendarCounter+=1
+                    if calendarCounter>7:
+                        y+=121
+                        #x=170
+                        calendarCounter=0
+                        calendarCounter+=1
                     dinnerPicker()
+                    
                 if days[1]%7==6:
                     print(str(days[0])+" its Sunday!")
+                    x=170
+                    #this makes sure the calendar sets the date numbers in the right boxes at the 1st full week.
+                    if days[0] <8 and days[0]>1:
+                        y=287
+                        calendarCounter=1
+                       
+
+
+                    
+                    calendarDateNumber(days[0],x,y)
+                    #x+=130
+                    calendarCounter+=1
+                    if calendarCounter>7:
+                        y+=121
+                        #x=170
+                        calendarCounter=0
+                        calendarCounter+=1
                     dinnerPicker()
+            
 
         ## This pauses the for loop at the week level to check if you like the dinner choices    
     
@@ -231,7 +404,10 @@ while loop==False:
                         break
                     else:
                         print("bye")
+                        window.mainloop()
                         loop=True
                         innerLoop=True
                         break
+
+#window.mainloop()
                     
